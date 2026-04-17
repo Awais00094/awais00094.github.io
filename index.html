@@ -5,60 +5,40 @@
   <title>Muhammad Awais</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap 5 CSS -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
     rel="stylesheet"
   >
-  <!-- Bootstrap Icons (optional) -->
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
   >
-  <link rel="icon" type="image/png" href="/img/awais.png">
-  <link rel="shortcut icon" type="image/png" href="/img/awais.png">
+
+  <link rel="icon" type="image/png" href="img/awais.png">
+  <link rel="shortcut icon" type="image/png" href="img/awais.png">
+
   <style>
-      #bibbase-wrapper,
-      #bibbase-wrapper *,
-      .bibbase_paper,
-      .bibbase_group,
-      .bibbase_header,
-      .bibbase_paper_title,
-      .bibbase_paper_author,
-      .bibbase_paper_journal,
-      .bibbase_paper_booktitle,
-      .bibbase_paper_pubdate,
-      .bibbase_icon_text {
-      color: #ffffff !important;
-      }
-
-      #bibbase-wrapper a,
-      #bibbase-wrapper a:visited {
-      color: #ffffff !important;
-      text-decoration: none;
-      }
-
-      #bibbase-wrapper a:hover {
-      color: #8ab4ff !important;
-      }
     body {
       background: #050816;
       color: #f8f9fa;
       scroll-behavior: smooth;
     }
+
     .navbar {
       background: rgba(5, 8, 22, 0.95);
       backdrop-filter: blur(10px);
     }
+
     .hero-section {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: radial-gradient(circle at top left, #040811ff 0%, #162461ff 45%, #000 100%);
+      background: radial-gradient(circle at top left, #040811 0%, #162461 45%, #000 100%);
       color: #f8f9fa;
       padding-top: 80px;
       padding-bottom: 80px;
     }
+
     .badge-pill {
       border-radius: 50px;
       padding: 0.4rem 0.9rem;
@@ -66,15 +46,18 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
+
     .card {
       border: 1px solid rgba(255, 255, 255, 0.05);
       background: rgba(10, 12, 30, 0.95);
+      transition: all 0.25s ease;
     }
+
     .card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-      transition: all 0.25s ease;
     }
+
     .section-title {
       font-weight: 700;
       letter-spacing: 0.06em;
@@ -82,10 +65,13 @@
       color: #8ab4ff;
       font-size: 0.9rem;
     }
+
     .section-heading {
       font-size: 2rem;
       font-weight: 700;
+      color: #ffffff;
     }
+
     .pill-tag {
       border-radius: 999px;
       padding: 0.2rem 0.7rem;
@@ -93,80 +79,125 @@
       border: 1px solid rgba(255,255,255,0.15);
       color: #cfd6ff;
     }
+
     .timeline-line {
       width: 3px;
       background: linear-gradient(#2b6be6, #8f3fff);
       margin: 0 auto;
     }
+
     .footer {
       background: #020410;
       color: #9ca3af;
     }
+
     a.nav-link.active {
-      color: #8ab4ff !important; 
+      color: #8ab4ff !important;
     }
+
+    .text-soft-white {
+      color: rgba(255,255,255,0.82) !important;
+    }
+
+    .text-soft-gray {
+      color: #c9d1e6 !important;
+    }
+
+    .hero-badge {
+      color: #ffffff !important;
+      background: rgba(255,255,255,0.08) !important;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .publication-card {
+      background: rgba(15,20,40,0.85);
+    }
+
+    #bibbase-wrapper,
+    #bibbase-wrapper *,
+    #bibbase-wrapper div,
+    #bibbase-wrapper span,
+    #bibbase-wrapper label,
+    #bibbase-wrapper p,
+    #bibbase-wrapper li,
+    #bibbase-wrapper ul,
+    #bibbase-wrapper ol,
+    #bibbase-wrapper em,
+    #bibbase-wrapper strong,
+    #bibbase-wrapper .bibbase_group,
+    #bibbase-wrapper .bibbase_header,
+    #bibbase-wrapper .bibbase_controls,
+    #bibbase-wrapper .bibbase_groupby,
+    #bibbase-wrapper .bibbase_sort,
+    #bibbase-wrapper .bibbase_paper,
+    #bibbase-wrapper .bibbase_paper_title,
+    #bibbase-wrapper .bibbase_paper_author,
+    #bibbase-wrapper .bibbase_paper_journal,
+    #bibbase-wrapper .bibbase_paper_booktitle,
+    #bibbase-wrapper .bibbase_paper_pubdate,
+    #bibbase-wrapper .bibbase_icon_text {
+      color: #ffffff !important;
+    }
+
+    #bibbase-wrapper a,
+    #bibbase-wrapper a:visited {
+      color: #ffffff !important;
+      text-decoration: none;
+    }
+
+    #bibbase-wrapper a:hover {
+      color: #8ab4ff !important;
+    }
+
+    #bibbase-wrapper select,
+    #bibbase-wrapper option {
+      color: #ffffff !important;
+      background-color: #0f1428 !important;
+    }
+
+    #bibbase-wrapper select {
+      border: 1px solid rgba(255,255,255,0.2) !important;
+      padding: 4px 8px;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    #bibbase-wrapper option {
+      background: #0f1428 !important;
+      color: #ffffff !important;
+    }
+
     #bibbase-wrapper .bibbase_group {
+      color: #ffffff !important;
+      font-weight: 700;
+      margin-top: 1rem;
+    }
+
+    #bibbase-wrapper .bibbase_controls label {
       color: #ffffff !important;
     }
 
     #bibbase-wrapper .bibbase_paper_title a {
       color: #ffffff !important;
     }
-    #bibbase-wrapper,
-#bibbase-wrapper * {
-  color: #ffffff !important;
-}
-
-#bibbase-wrapper a,
-#bibbase-wrapper a:visited {
-  color: #ffffff !important;
-  text-decoration: none;
-}
-
-#bibbase-wrapper a:hover {
-  color: #8ab4ff !important;
-}
-
-#bibbase-wrapper select,
-#bibbase-wrapper option {
-  color: #ffffff !important;
-  background-color: #0f1428 !important;
-}
-
-#bibbase-wrapper select {
-  border: 1px solid rgba(255,255,255,0.2) !important;
-  padding: 4px 8px;
-  border-radius: 6px;
-}
-
-#bibbase-wrapper .bibbase_group,
-#bibbase-wrapper .bibbase_paper_title,
-#bibbase-wrapper .bibbase_paper_author,
-#bibbase-wrapper .bibbase_paper_journal,
-#bibbase-wrapper .bibbase_paper_booktitle,
-#bibbase-wrapper .bibbase_paper_pubdate,
-#bibbase-wrapper .bibbase_header,
-#bibbase-wrapper .bibbase_controls {
-  color: #ffffff !important;
-}
   </style>
 </head>
 <body>
 
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top border-bottom border-secondary">
   <div class="container">
-    <a class="navbar-brand text-light fw-bold" href="#">
+    <a class="navbar-brand text-light fw-bold" href="#home">
       <i class="bi bi-cpu me-2"></i>Muhammad Awais
     </a>
-    <button class="navbar-toggler text-light border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+    <button class="navbar-toggler text-light border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon">
         <i class="bi bi-list text-light fs-2"></i>
       </span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto align-items-lg-center">
-        
         <li class="nav-item">
           <a class="nav-link text-light" href="#publications">Publications</a>
         </li>
@@ -184,7 +215,7 @@
         </li>
         <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
           <a class="btn btn-primary px-3" href="#contact">
-            <i class="bi bi-envelope me-1"></i> Contact.
+            <i class="bi bi-envelope me-1"></i> Contact
           </a>
         </li>
       </ul>
@@ -192,59 +223,51 @@
   </div>
 </nav>
 
-<!-- Hero -->
 <section class="hero-section" id="home">
   <div class="container">
     <div class="row align-items-center gy-5">
 
-      <!-- Right content: photo + card -->
-      <div class="col-lg-6">
+      <div class="col-lg-6 order-lg-2">
         <div class="card border-0 shadow-lg">
           <div class="card-body p-4">
-            <!-- Your Photo -->
             <div class="text-center mb-3">
-              <img src="img/awais.png" alt="My Photo"
+              <img src="img/awais.png" alt="Muhammad Awais"
                    class="rounded-circle border border-secondary"
-                   style="width:350px; height:350px; object-fit:cover;"/>
+                   style="width:350px; height:350px; object-fit:cover;">
             </div>
 
             <h5 class="card-title text-center mb-3 text-white">
-               <span class="badge bg-dark-subtle text-dark badge-pill mb-3">
-                <i class="bi bi-mortarboard me-1"></i> 2nd Year PhD Student — Télécom Paris
+              <span class="badge hero-badge badge-pill mb-3">
+                <i class="bi bi-mortarboard me-1"></i> 2nd Year PhD Student, Télécom Paris
               </span>
-                    
             </h5>
 
-            <p class="small text-secondary text-center text-white">
+            <p class="small text-center text-soft-white">
               AI-enhanced side-channel attack pipelines, combining hardware simulation and validation,
               machine learning, and microarchitectural analysis for modern SoCs and CPUs.
             </p>
 
-            
-
-            <ul class="small mb-0 text-secondary text-white">
+            <ul class="small mb-0 text-soft-white">
               <li>Automating leakage-based attacks using AI.</li>
               <li>Gem5 simulation of microarchitectural leak sources.</li>
               <li>Evaluating attacks on RISC-V, ARM, and x86 platforms.</li>
-              <li>Developing next-gen detection and mitigation strategies.</li>
+              <li>Developing next-generation detection and mitigation strategies.</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Left content -->
-      <div class="col-lg-6">
-        <span class="badge bg-dark-subtle text-dark badge-pill mb-3">
-          <i class="bi bi-person-badge mb-2 text-white"></i> PhD Research Overview
-          <!-- <i class="bi bi-mortarboard me-1"></i> 2nd Year PhD Student — Télécom Paris -->
+      <div class="col-lg-6 order-lg-1">
+        <span class="badge hero-badge badge-pill mb-3">
+          <i class="bi bi-person-badge me-1"></i> PhD Research Overview
         </span>
 
         <h1 class="display-5 fw-bold mb-3">
           Advanced <span class="text-primary">AI-Driven Automation</span><br>
-          for Side-Channel Attacks.
+          for Side-Channel Attacks
         </h1>
 
-        <p class="lead mb-4 text-light-50">
+        <p class="lead mb-4 text-soft-white">
           I am a PhD researcher at <strong>Télécom Paris</strong>, working on
           <em>AI-based automation of side-channel attacks and their analysis</em>.
           My work explores how machine learning, hardware simulation, and
@@ -254,82 +277,63 @@
         <div class="d-flex flex-wrap gap-2 mb-4">
           <span class="pill-tag bg-dark">AI-Based SCA Automation</span>
           <span class="pill-tag bg-dark">Microarchitectural Leaks</span>
-          <span class="pill-tag bg-dark">RISC-V / Gem5</span>
+          <span class="pill-tag bg-dark">RISC-V / gem5</span>
           <span class="pill-tag bg-dark">Hardware Security</span>
         </div>
 
         <div class="d-flex flex-wrap gap-2">
-          <a href="#attacks" class="btn btn-primary btn-lg">
-            Explore Attacks
-          </a>
-          <a href="#research" class="btn btn-outline-light btn-lg">
-            View Research Focus
+          <a href="#attacks" class="btn btn-primary btn-lg">Explore Attacks</a>
+          <a href="#research" class="btn btn-outline-light btn-lg">View Research Focus</a>
+          <a href="https://scholar.google.com/citations?user=9I0qVQEAAAAJ&hl=en" target="_blank" class="btn btn-outline-light btn-lg">
+            <i class="bi bi-mortarboard me-1"></i> Google Scholar
           </a>
         </div>
       </div>
-
-      
 
     </div>
   </div>
 </section>
 
-
-<!-- Publications -->
 <section class="py-5 bg-dark" id="publications">
   <div class="container">
     <p class="section-title mb-1">Publications</p>
-    <h2 class="section-heading mb-4 text-white">Selected Research Outputs</h2>
+    <h2 class="section-heading mb-4">Selected Research Outputs</h2>
 
-    <div class="card border-0 shadow-sm p-4" style="background: rgba(15,20,40,0.85);">
-      <div id="bibbase-wrapper" class="text-white"></div>
-
+    <div class="card border-0 shadow-sm p-4 publication-card">
+      <div id="bibbase-wrapper"></div>
       <script src="https://bibbase.org/show?bib=https://awais00094.github.io/publications.bib&jsonp=1"></script>
     </div>
   </div>
 </section>
 
-
-<!-- About -->
 <section class="py-5" id="about">
   <div class="container">
     <p class="section-title mb-1">Overview</p>
     <h2 class="section-heading mb-4">What Are Side-Channel Attacks?</h2>
     <div class="row gy-4">
       <div class="col-lg-8">
-        <p class="text-secondary">
+        <p class="text-soft-gray">
           Side-channel attacks exploit indirect information leaked by hardware during computation,
           such as execution time, power consumption, electromagnetic emissions, or microarchitectural
           behavior. Instead of breaking cryptography mathematically, attackers observe how a device
           behaves while performing sensitive operations.
         </p>
-        <p class="text-secondary mb-0">
+        <p class="text-soft-gray mb-0">
           Research in hardware security aims to model, measure, and mitigate these leaks at multiple
           layers: circuit, microarchitecture, firmware, and software. This includes secure design of
           CPUs, accelerators, cryptographic engines, and embedded systems.
         </p>
       </div>
+
       <div class="col-lg-4">
         <div class="card h-100">
-          <div class="card-body" style="color: rgba(255,255,255,0.8);">
+          <div class="card-body text-soft-white">
             <h5 class="card-title mb-3">Key Concepts</h5>
             <ul class="list-unstyled small mb-0">
-              <li class="mb-2">
-                <i class="bi bi-dot text-primary"></i>
-                Information leakage channels
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-dot text-primary"></i>
-                Cryptographic implementations (AES, RSA, ECC)
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-dot text-primary"></i>
-                Microarchitectural attacks (cache, branch predictor, TLB)
-              </li>
-              <li>
-                <i class="bi bi-dot text-primary"></i>
-                Countermeasures and secure-by-design architectures
-              </li>
+              <li class="mb-2"><i class="bi bi-dot text-primary"></i> Information leakage channels</li>
+              <li class="mb-2"><i class="bi bi-dot text-primary"></i> Cryptographic implementations (AES, RSA, ECC)</li>
+              <li class="mb-2"><i class="bi bi-dot text-primary"></i> Microarchitectural attacks (cache, branch predictor, TLB)</li>
+              <li><i class="bi bi-dot text-primary"></i> Countermeasures and secure-by-design architectures</li>
             </ul>
           </div>
         </div>
@@ -338,13 +342,12 @@
   </div>
 </section>
 
-<!-- Side-Channel Attacks -->
 <section class="py-5 bg-dark" id="attacks">
   <div class="container">
     <p class="section-title mb-1">Taxonomy</p>
-    <h2 class="section-heading mb-4">Types of Side-Channel Attacks I focus on</h2>
+    <h2 class="section-heading mb-4">Types of Side-Channel Attacks I Focus On</h2>
     <div class="row g-4">
-      <!-- Card 1 -->
+
       <div class="col-md-6 col-lg-3">
         <div class="card h-100">
           <div class="card-body">
@@ -352,19 +355,19 @@
               <div class="me-2">
                 <i class="bi bi-lightning-charge text-primary fs-4"></i>
               </div>
-              <h5 class="card-title mb-0" style="color: rgba(255,255,255,0.8);" >Power Analysis of IOTs</h5>
+              <h5 class="card-title mb-0 text-soft-white">Power Analysis of IoT Devices</h5>
             </div>
-            <p class="card-text small text-secondary">
-              Power analysis on IoT devices reveals data-dependent consumption patterns that attackers can exploit to extract cryptographic keys and sensitive operations.
-              Measures dynamic power consumption of a IOT device during cryptographic operations
-              to recover secret keys (SPA / DPA / CPA).
+            <p class="card-text small text-soft-gray">
+              Power analysis on IoT devices reveals data-dependent consumption patterns that attackers can exploit
+              to extract cryptographic keys and sensitive operations. It measures dynamic power consumption during
+              cryptographic execution to recover secret keys through SPA, DPA, or CPA.
             </p>
-            <span class="pill-tag bg-dark">Gem5 Simulations</span>
-            <span class="pill-tag bg-dark mt-1">IOTs Benchmark Testing</span>
+            <span class="pill-tag bg-dark">gem5 Simulations</span>
+            <span class="pill-tag bg-dark mt-1">IoT Benchmark Testing</span>
           </div>
         </div>
       </div>
-      <!-- Card 2 -->
+
       <div class="col-md-6 col-lg-3">
         <div class="card h-100">
           <div class="card-body">
@@ -372,21 +375,21 @@
               <div class="me-2">
                 <i class="bi bi-stopwatch text-primary fs-4"></i>
               </div>
-              <h5 class="card-title mb-0" style="color: rgba(255,255,255,0.8);">Timing Attacks</h5>
+              <h5 class="card-title mb-0 text-soft-white">Timing Attacks</h5>
             </div>
-            <p class="card-text small text-secondary">
-              Exploit variations in execution time caused by data-dependent branches,
-              memory accesses, or microarchitectural events.Abuse shared resources such as caches, branch predictors, or speculative
-              execution units (e.g., cache-timing, Spectre-like attacks)
+            <p class="card-text small text-soft-gray">
+              These attacks exploit execution-time variations caused by data-dependent branches, memory accesses,
+              or microarchitectural events. They also abuse shared resources such as caches, branch predictors,
+              and speculative execution units.
             </p>
             <span class="pill-tag bg-dark">FLUSH + Reload</span>
-            <span class="pill-tag bg-dark">Prime Probe</span>
-            <span class="pill-tag bg-dark">Spectre Varient Attacks</span>
+            <span class="pill-tag bg-dark">Prime + Probe</span>
+            <span class="pill-tag bg-dark">Spectre Variant Attacks</span>
             <span class="pill-tag bg-dark mt-1">Constant-Time / Formal Analysis</span>
           </div>
         </div>
       </div>
-      <!-- Card 3 -->
+
       <div class="col-md-6 col-lg-3">
         <div class="card h-100">
           <div class="card-body">
@@ -394,19 +397,19 @@
               <div class="me-2">
                 <i class="bi bi-wifi text-primary fs-4"></i>
               </div>
-              <h5 class="card-title mb-0" style="color: rgba(255,255,255,0.8);">OpCode Analysis</h5>
+              <h5 class="card-title mb-0 text-soft-white">Opcode Analysis</h5>
             </div>
-            <p class="card-text small text-secondary">
-              Opcode-level profiling links specific instruction sequences to distinctive leakage patterns, 
-              enabling fine-grained attribution and optimization of side-channel attacks on modern processors. Analysis of OpCodes by doing the simulation on gem5 and the detailed analysis of the O3 pipline.
-
+            <p class="card-text small text-soft-gray">
+              Opcode-level profiling links specific instruction sequences to distinctive leakage patterns,
+              enabling fine-grained attribution and optimization of side-channel attacks on modern processors.
+              This includes gem5-based simulation and detailed O3 pipeline analysis.
             </p>
-            <span class="pill-tag bg-dark">Cryptographic OpCodes / AES OpCode / hardware-level</span>
+            <span class="pill-tag bg-dark">Cryptographic Opcodes</span>
             <span class="pill-tag bg-dark mt-1">OpenSSL</span>
           </div>
         </div>
       </div>
-      <!-- Card 4 -->
+
       <div class="col-md-6 col-lg-3">
         <div class="card h-100">
           <div class="card-body">
@@ -414,24 +417,23 @@
               <div class="me-2">
                 <i class="bi bi-diagram-3 text-primary fs-4"></i>
               </div>
-              <h5 class="card-title mb-0" style="color: rgba(255,255,255,0.8);">ISA Modifications</h5>
+              <h5 class="card-title mb-0 text-soft-white">ISA Modifications</h5>
             </div>
-            <p class="card-text small text-secondary">
-              Custom ISA extensions in RISC-V enable controlled leakage points, making it possible to analyze, trigger,
-               and evaluate side-channel vulnerabilities with fine-grained architectural visibility.“ISA-level CSR modifications expose microarchitectural behavior with high precision, 
-               enabling deeper analysis and exploitation of side-channel vulnerabilities
-              
+            <p class="card-text small text-soft-gray">
+              Custom ISA extensions in RISC-V enable controlled leakage points, making it possible to analyze,
+              trigger, and evaluate side-channel vulnerabilities with fine-grained architectural visibility.
+              ISA-level CSR modifications expose microarchitectural behavior with high precision.
             </p>
             <span class="pill-tag bg-dark">RISC-V ISA</span>
             <span class="pill-tag bg-dark mt-1">CSRs</span>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- Defenses -->
 <section class="py-5" id="defenses">
   <div class="container">
     <p class="section-title mb-1">Mitigation</p>
@@ -442,43 +444,46 @@
           <div class="col-sm-6">
             <div class="card h-100">
               <div class="card-body">
-                <h6 class="card-title" style="color: rgba(255,255,255,0.8);">Algorithmic Countermeasures</h6>
-                <p class="small text-secondary mb-0">
+                <h6 class="card-title text-soft-white">Algorithmic Countermeasures</h6>
+                <p class="small text-soft-gray mb-0">
                   Masking, hiding, constant-time implementations, and randomized encodings
                   reduce correlation between leakage and secrets.
                 </p>
               </div>
             </div>
           </div>
+
           <div class="col-sm-6">
             <div class="card h-100">
               <div class="card-body">
-                <h6 class="card-title" style="color: rgba(255,255,255,0.8);">Microarchitectural Isolation</h6>
-                <p class="small text-secondary mb-0">
-                  Cache partitioning, constant-latency memories, and flushing / fencing
+                <h6 class="card-title text-soft-white">Microarchitectural Isolation</h6>
+                <p class="small text-soft-gray mb-0">
+                  Cache partitioning, constant-latency memories, and flushing or fencing
                   strategies for untrusted code and enclaves.
                 </p>
               </div>
             </div>
           </div>
+
           <div class="col-sm-6">
             <div class="card h-100">
               <div class="card-body">
-                <h6 class="card-title" style="color: rgba(255,255,255,0.8);">Secure Hardware Design</h6>
-                <p class="small text-secondary mb-0">
-                  Side-channel–resistant logic styles, balanced routing, power-noise
-                  injection, and secure SoC/FPGA architectures.
+                <h6 class="card-title text-soft-white">Secure Hardware Design</h6>
+                <p class="small text-soft-gray mb-0">
+                  Side-channel-resistant logic styles, balanced routing, power-noise
+                  injection, and secure SoC or FPGA architectures.
                 </p>
               </div>
             </div>
           </div>
+
           <div class="col-sm-6">
             <div class="card h-100">
               <div class="card-body">
-                <h6 class="card-title" style="color: rgba(255,255,255,0.8);">Verification & Testing</h6>
-                <p class="small text-secondary mb-0">
+                <h6 class="card-title text-soft-white">Verification & Testing</h6>
+                <p class="small text-soft-gray mb-0">
                   Formal leakage models, leakage assessment, TVLA tests, and simulation
-                  (e.g., Gem5, RTL-level analysis) to quantify risk.
+                  such as gem5 or RTL-level analysis to quantify risk.
                 </p>
               </div>
             </div>
@@ -486,93 +491,93 @@
         </div>
       </div>
 
-      <!-- Timeline -->
       <div class="col-lg-5">
-        <h6 class="text-secondary mb-3">Typical Secure-Design Workflow</h6>
+        <h6 class="text-soft-gray mb-3">Typical Secure-Design Workflow</h6>
         <div class="row">
           <div class="col-2 d-flex justify-content-center">
             <div class="timeline-line"></div>
           </div>
           <div class="col-10">
             <div class="mb-4">
-              <h6 class="mb-1">1. Threat Modeling</h6>
-              <p class="small text-secondary mb-0">
-                Identify attackers, capabilities (local/remote, physical access), and targeted assets.
+              <h6 class="mb-1 text-white">1. Threat Modeling</h6>
+              <p class="small text-soft-gray mb-0">
+                Identify attackers, capabilities, and targeted assets.
               </p>
             </div>
             <div class="mb-4">
-              <h6 class="mb-1">2. Leakage Assessment</h6>
-              <p class="small text-secondary mb-0">
+              <h6 class="mb-1 text-white">2. Leakage Assessment</h6>
+              <p class="small text-soft-gray mb-0">
                 Measure or simulate side-channel leakage on prototypes or models.
               </p>
             </div>
             <div class="mb-4">
-              <h6 class="mb-1">3. Countermeasure Design</h6>
-              <p class="small text-secondary mb-0">
-                Integrate algorithmic and hardware-level protections; evaluate overhead.
+              <h6 class="mb-1 text-white">3. Countermeasure Design</h6>
+              <p class="small text-soft-gray mb-0">
+                Integrate algorithmic and hardware-level protections and evaluate overhead.
               </p>
             </div>
             <div class="mb-0">
-              <h6 class="mb-1">4. Validation & Certification</h6>
-              <p class="small text-secondary mb-0">
-                Perform standardized tests (e.g., TVLA, certification labs) and iterate on design.
+              <h6 class="mb-1 text-white">4. Validation & Certification</h6>
+              <p class="small text-soft-gray mb-0">
+                Perform standardized tests and iterate on the design.
               </p>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- Research Focus -->
 <section class="py-5 bg-dark" id="research">
   <div class="container">
     <p class="section-title mb-1">Research Focus</p>
     <h2 class="section-heading mb-4">Current & Future Work</h2>
     <div class="row gy-4">
+
       <div class="col-lg-4">
         <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title mb-2" style="color: rgba(255,255,255,0.8);">RISC-V / x86 / ARM Platforms</h5>
-            <p class="small text-secondary">
+            <h5 class="card-title mb-2 text-soft-white">RISC-V / x86 / ARM Platforms</h5>
+            <p class="small text-soft-gray">
               Designing and evaluating microarchitectural side-channel attacks on open
-              ISAs (RISC-V) and commercial architectures (x86 / ARM) using simulation and real hardware.
+              ISAs and commercial architectures using simulation and real hardware.
             </p>
-            <ul class="small text-secondary mb-0">
-              <li>Gem5-based attack pipelines</li>
+            <ul class="small text-soft-gray mb-0">
+              <li>gem5-based attack pipelines</li>
               <li>ISA-level characterization</li>
               <li>Cache, branch, and speculative leaks</li>
             </ul>
           </div>
         </div>
       </div>
+
       <div class="col-lg-4">
         <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title mb-2" style="color: rgba(255,255,255,0.8);">Measurement & Datasets</h5>
-            <p class="small text-secondary">
-              Capturing and analyzing power/EM/timing traces to build datasets for
-              statistical and machine learning–based side-channel analysis.
+            <h5 class="card-title mb-2 text-soft-white">Measurement & Datasets</h5>
+            <p class="small text-soft-gray">
+              Capturing and analyzing power, EM, and timing traces to build datasets for
+              statistical and machine learning-based side-channel analysis.
             </p>
-            <ul class="small text-secondary mb-0">
-              <li>Lab experiments on FPGA / SoC boards</li>
-              <li>Signal processing & feature engineering</li>
-              <li>ML-based key recovery & detection</li>
+            <ul class="small text-soft-gray mb-0">
+              <li>Lab experiments on FPGA and SoC boards</li>
+              <li>Signal processing and feature engineering</li>
+              <li>ML-based key recovery and detection</li>
             </ul>
           </div>
         </div>
       </div>
+
       <div class="col-lg-4">
         <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title mb-2" style="color: rgba(255,255,255,0.8);">Defenses & Tooling</h5>
-            <p class="small text-secondary">
+            <h5 class="card-title mb-2 text-soft-white">Defenses & Tooling</h5>
+            <p class="small text-soft-gray">
               Building tools to evaluate countermeasures, automate experiments, and
               support secure-by-design hardware development.
             </p>
-            <ul class="small text-secondary mb-0">
+            <ul class="small text-soft-gray mb-0">
               <li>Leakage-aware design flows</li>
               <li>Automated testbenches</li>
               <li>Visualization dashboards</li>
@@ -580,25 +585,23 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- Contact / Footer -->
 <section class="py-5" id="contact">
   <div class="container">
     <p class="section-title mb-1">Get in Touch</p>
     <h2 class="section-heading mb-4">Contact & Collaboration</h2>
     <div class="row gy-4">
       <div class="col-lg-6">
-        <p class="text-secondary">
-          Welcome, and thank you for visiting—feel free to explore my work, connect with me, 
-          and collaborate on cutting-edge research in hardware security and side-channel analysis.
+        <p class="text-soft-gray">
+          Welcome, and thank you for visiting. Feel free to explore my work, connect with me,
+          and collaborate on research in hardware security and side-channel analysis.
         </p>
 
-        <ul class="list-unstyled text-secondary small mb-0 text-white">
-          
-          <!-- Email -->
+        <ul class="list-unstyled small mb-0 text-white">
           <li class="mb-2">
             <i class="bi bi-envelope me-2 text-primary"></i>
             <a href="mailto:muhammad.awais@telecom-paris.fr" class="text-white text-decoration-none">
@@ -606,13 +609,11 @@
             </a>
           </li>
 
-          <!-- Affiliation -->
           <li class="mb-2">
             <i class="bi bi-building me-2 text-primary"></i>
-            SSH / COMELEC / Telecom-Paris
+            SSH / COMELEC / Télécom Paris
           </li>
 
-          <!-- GitHub -->
           <li class="mb-2">
             <i class="bi bi-github me-2 text-primary"></i>
             <a href="https://github.com/awais00094" target="_blank" class="text-white text-decoration-none">
@@ -620,20 +621,17 @@
             </a>
           </li>
 
-          <!-- Google Scholar -->
           <li>
             <i class="bi bi-mortarboard me-2 text-primary"></i>
-            <a href="https://scholar.google.com/citations?user=9I0qVQEAAAAJ&hl=en&authuser=1" target="_blank" class="text-white text-decoration-none">
+            <a href="https://scholar.google.com/citations?user=9I0qVQEAAAAJ&hl=en" target="_blank" class="text-white text-decoration-none">
               Google Scholar Profile
             </a>
           </li>
-
         </ul>
       </div>
 
       <div class="col-lg-6">
         <form class="row g-3" action="mailto:muhammad.awais@telecom-paris.fr" method="POST" enctype="text/plain">
-
           <div class="col-md-6">
             <label class="form-label">Name</label>
             <input type="text" name="Name" class="form-control bg-dark text-light border-secondary" placeholder="Your name">
@@ -646,8 +644,7 @@
 
           <div class="col-12">
             <label class="form-label">Message</label>
-            <textarea name="Message" class="form-control bg-dark text-light border-secondary" rows="4"
-              placeholder="Let’s talk about side-channel attacks & hardware security..."></textarea>
+            <textarea name="Message" class="form-control bg-dark text-light border-secondary" rows="4" placeholder="Let’s talk about side-channel attacks and hardware security..."></textarea>
           </div>
 
           <div class="col-12">
@@ -655,7 +652,6 @@
               <i class="bi bi-send me-1"></i> Send Message
             </button>
           </div>
-
         </form>
       </div>
     </div>
@@ -668,19 +664,16 @@
       © <span id="year"></span> Muhammad Awais · All rights reserved.
     </p>
     <p class="mb-0 small">
-      Telecom-Paris <span class="text-primary">M Awais</span>
+      Télécom Paris <span class="text-primary">M Awais</span>
     </p>
   </div>
 </footer>
 
-<!-- Bootstrap 5 JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  // Set current year in footer
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Simple active link handling on scroll (optional)
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-link");
 
@@ -688,14 +681,15 @@
     let current = "";
     sections.forEach(section => {
       const sectionTop = section.offsetTop - 120;
-      if (pageYOffset >= sectionTop) {
+      if (window.pageYOffset >= sectionTop) {
         current = section.getAttribute("id");
       }
     });
-    navLinks.forEach(li => {
-      li.classList.remove("active");
-      if (li.getAttribute("href") === "#" + current) {
-        li.classList.add("active");
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
       }
     });
   });
