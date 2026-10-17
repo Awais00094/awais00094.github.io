@@ -2,41 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Muhammad Awais</title>
+  <title>Muhammad Awais · RISC-V Processor Security</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Muhammad Awais, PhD researcher at Télécom Paris (Institut Polytechnique de Paris), working on RISC-V processor security: pre-silicon security validation, ISA-level mitigations, side-channel analysis and microarchitectural vulnerability assessment.">
+  <meta name="author" content="Muhammad Awais">
 
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  >
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-  >
+  <!-- Link previews (LinkedIn, X, Slack, email) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Muhammad Awais · RISC-V Processor Security">
+  <meta property="og:description" content="PhD researcher at Télécom Paris. Pre-silicon security validation, ISA-level Spectre mitigations, side-channel analysis and microarchitectural vulnerability assessment on RISC-V.">
+  <meta property="og:url" content="https://awais00094.github.io/">
+  <meta property="og:image" content="https://awais00094.github.io/img/awais.png">
+  <meta name="twitter:card" content="summary">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
   <link rel="icon" type="image/png" href="img/awais.png">
   <link rel="shortcut icon" type="image/png" href="img/awais.png">
 
   <style>
-    body {
-      background: #050816;
-      color: #f8f9fa;
-      scroll-behavior: smooth;
+    :root {
+      --bg: #050816;
+      --bg-alt: #0a0e22;
+      --card: rgba(13, 17, 38, 0.95);
+      --line: rgba(255, 255, 255, 0.08);
+      --text: #f8f9fa;
+      --soft: #c9d1e6;
+      --muted: #8f9bb8;
+      --accent: #8ab4ff;
+      --accent-2: #a78bfa;
+      --gold: #f5c56b;
     }
 
-    .navbar {
-      background: rgba(5, 8, 22, 0.95);
-      backdrop-filter: blur(10px);
-    }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body { background: var(--bg); color: var(--text); }
+
+    .navbar { background: rgba(5, 8, 22, 0.92); backdrop-filter: blur(10px); }
+    .navbar .nav-link { color: var(--soft) !important; font-size: 0.95rem; }
+    .navbar .nav-link:hover, .navbar .nav-link.active { color: var(--accent) !important; }
+
+    section { padding: 5rem 0; }
+    .section-alt { background: var(--bg-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
     .hero-section {
       min-height: 100vh;
       display: flex;
       align-items: center;
       background: radial-gradient(circle at top left, #040811 0%, #162461 45%, #000 100%);
-      color: #f8f9fa;
-      padding-top: 80px;
-      padding-bottom: 80px;
+      padding-top: 96px;
+      padding-bottom: 64px;
+    }
+
+    .hero-photo {
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid rgba(138, 180, 255, 0.35);
+      box-shadow: 0 0 0 10px rgba(138, 180, 255, 0.06), 0 20px 60px rgba(0, 0, 0, 0.55);
     }
 
     .badge-pill {
@@ -45,656 +70,601 @@
       font-size: 0.75rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      font-weight: 600;
     }
+    .hero-badge { white-space: normal; text-align: left; line-height: 1.5; max-width: 100%; color: #fff; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.14); }
+
+    .section-title { font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-size: 0.85rem; }
+    .section-heading { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; color: #fff; }
+
+    .text-soft { color: var(--soft) !important; }
+    .text-muted-2 { color: var(--muted) !important; }
 
     .card {
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      background: rgba(10, 12, 30, 0.95);
-      transition: all 0.25s ease;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .section-title {
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #8ab4ff;
-      font-size: 0.9rem;
-    }
-
-    .section-heading {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #ffffff;
-    }
+    .card-lift:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45); border-color: rgba(138, 180, 255, 0.25); }
 
     .pill-tag {
+      display: inline-block;
       border-radius: 999px;
-      padding: 0.2rem 0.7rem;
-      font-size: 0.75rem;
-      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.18rem 0.65rem;
+      font-size: 0.74rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: #cfd6ff;
+      background: rgba(255, 255, 255, 0.03);
+      margin: 0 0.25rem 0.35rem 0;
     }
 
-    .timeline-line {
-      width: 3px;
-      background: linear-gradient(#2b6be6, #8f3fff);
-      margin: 0 auto;
-    }
+    .stat { border-left: 2px solid var(--accent); padding-left: 0.9rem; }
+    .stat .num { font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1.1; }
+    .stat .lbl { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
 
-    .footer {
-      background: #020410;
-      color: #9ca3af;
-    }
+    /* News */
+    .news-item { display: grid; grid-template-columns: 92px 1fr; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--line); }
+    .news-item:last-child { border-bottom: 0; }
+    .news-date { color: var(--accent); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; padding-top: 2px; }
+    .news-text { color: var(--soft); }
+    .news-text strong { color: #fff; }
 
-    a.nav-link.active {
-      color: #8ab4ff !important;
-    }
+    /* Projects */
+    .project-icon { width: 42px; height: 42px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; background: rgba(138, 180, 255, 0.1); color: var(--accent); font-size: 1.25rem; flex-shrink: 0; }
+    .project-venue { font-size: 0.78rem; color: var(--muted); }
+    .award { color: var(--gold); }
+    .card a.proj-link { color: var(--accent); text-decoration: none; font-size: 0.85rem; }
+    .card a.proj-link:hover { text-decoration: underline; }
 
-    .text-soft-white {
-      color: rgba(255,255,255,0.82) !important;
-    }
+    /* Publications */
+    .pub-filters .btn { border-radius: 999px; font-size: 0.82rem; padding: 0.3rem 0.9rem; }
+    .pub-filters .btn.active { background: var(--accent); border-color: var(--accent); color: #050816; }
+    .pub-year { font-size: 1.05rem; font-weight: 700; color: var(--accent); margin: 1.75rem 0 0.5rem; }
+    .pub { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+    .pub-title { color: #fff; font-weight: 600; margin-bottom: 0.25rem; }
+    .pub-authors { color: var(--soft); font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .pub-authors .me { color: #fff; font-weight: 700; }
+    .pub-venue { color: var(--muted); font-size: 0.88rem; font-style: italic; }
+    .pub-type { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; margin-right: 0.4rem; vertical-align: 2px; }
+    .t-conference { background: rgba(138, 180, 255, 0.14); color: var(--accent); }
+    .t-journal { background: rgba(167, 139, 250, 0.16); color: var(--accent-2); }
+    .t-workshop { background: rgba(94, 234, 212, 0.13); color: #5eead4; }
+    .t-poster { background: rgba(255, 255, 255, 0.08); color: var(--soft); }
+    .pub-award { font-size: 0.75rem; color: var(--gold); font-weight: 600; margin-left: 0.3rem; }
+    .pub-links a { font-size: 0.8rem; color: var(--accent); text-decoration: none; margin-right: 0.9rem; }
+    .pub-links a:hover { text-decoration: underline; }
 
-    .text-soft-gray {
-      color: #c9d1e6 !important;
-    }
+    /* Workflow timeline */
+    .flow-step { position: relative; padding-left: 2.2rem; padding-bottom: 1.4rem; }
+    .flow-step::before { content: ""; position: absolute; left: 0.62rem; top: 1.6rem; bottom: 0; width: 2px; background: linear-gradient(#2b6be6, #8f3fff); opacity: 0.6; }
+    .flow-step:last-child::before { display: none; }
+    .flow-step .dot { position: absolute; left: 0; top: 0.1rem; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: #1b2a66; border: 2px solid var(--accent); font-size: 0.7rem; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; }
 
-    .hero-badge {
-      color: #ffffff !important;
-      background: rgba(255,255,255,0.08) !important;
-      border: 1px solid rgba(255,255,255,0.12);
-    }
+    .footer { background: #020410; color: #9ca3af; }
+    a.link-soft { color: #fff; text-decoration: none; }
+    a.link-soft:hover { color: var(--accent); }
 
-    .publication-card {
-      background: rgba(15,20,40,0.85);
-    }
-
-    #bibbase-wrapper,
-    #bibbase_body,
-    #bibbase_header,
-    #bibbase-wrapper *,
-    #bibbase-wrapper div,
-    #bibbase-wrapper span,
-    #bibbase-wrapper label,
-    #bibbase-wrapper p,
-    #bibbase-wrapper li,
-    #bibbase-wrapper ul,
-    #bibbase-wrapper ol,
-    #bibbase-wrapper em,
-    #bibbase-wrapper strong,
-    #bibbase-wrapper .bibbase_group,
-    #bibbase-wrapper .bibbase_header,
-    #bibbase-wrapper .bibbase_controls,
-    #bibbase-wrapper .bibbase_groupby,
-    #bibbase-wrapper .bibbase_sort,
-    #bibbase-wrapper .bibbase_paper,
-    #bibbase-wrapper .bibbase_paper_title,
-    #bibbase-wrapper .bibbase_paper_author,
-    #bibbase-wrapper .bibbase_paper_journal,
-    #bibbase-wrapper .bibbase_paper_booktitle,
-    #bibbase-wrapper .bibbase_paper_pubdate,
-    #bibbase-wrapper .bibbase_icon_text {
-      color: #ffffff !important;
-    }
-
-    #bibbase-wrapper a,
-    #bibbase-wrapper a:visited {
-      color: #ffffff !important;
-      text-decoration: none;
-    }
-
-    #bibbase-wrapper a:hover {
-      color: #8ab4ff !important;
-    }
-
-    #bibbase-wrapper select,
-    #bibbase-wrapper option {
-      color: #ffffff !important;
-      background-color: #0f1428 !important;
-    }
-
-    #bibbase-wrapper select {
-      border: 1px solid rgba(255,255,255,0.2) !important;
-      padding: 4px 8px;
-      border-radius: 6px;
-      outline: none;
-    }
-
-    #bibbase-wrapper option {
-      background: #0f1428 !important;
-      color: #ffffff !important;
-    }
-
-    #bibbase-wrapper .bibbase_group {
-      color: #ffffff !important;
-      font-weight: 700;
-      margin-top: 1rem;
-    }
-
-    #bibbase-wrapper .bibbase_controls label {
-      color: #ffffff !important;
-    }
-
-    #bibbase-wrapper .bibbase_paper_title a {
-      color: #ffffff !important;
+    @media (max-width: 575.98px) {
+      section { padding: 3.5rem 0; }
+      .news-item { grid-template-columns: 1fr; gap: 0.15rem; }
+      .container { padding-left: 16px; padding-right: 16px; }
     }
   </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg fixed-top border-bottom border-secondary">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top border-bottom border-secondary">
   <div class="container">
-    <a class="navbar-brand text-light fw-bold" href="#home">
-      <i class="bi bi-cpu me-2"></i>Muhammad Awais
-    </a>
-
-    <button class="navbar-toggler text-light border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">
-        <i class="bi bi-list text-light fs-2"></i>
-      </span>
+    <a class="navbar-brand fw-bold" href="#home"><i class="bi bi-cpu me-2"></i>Muhammad Awais</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto align-items-lg-center">
-        <li class="nav-item">
-          <a class="nav-link text-light" href="#publications">Publications</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="#about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="#attacks">Side-Channel Attacks</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="#defenses">Defenses</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="#research">Research Focus</a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+        <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+        <li class="nav-item"><a class="nav-link" href="#software">Software</a></li>
+        <li class="nav-item"><a class="nav-link" href="#service">Service</a></li>
         <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-          <a class="btn btn-primary px-3" href="#contact">
-            <i class="bi bi-envelope me-1"></i> Contact
-          </a>
+          <a class="btn btn-primary px-3" href="#contact"><i class="bi bi-envelope me-1"></i> Contact</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
+<!-- ============================== HERO ============================== -->
 <section class="hero-section" id="home">
   <div class="container">
     <div class="row align-items-center gy-5">
-
-      <div class="col-lg-6 order-lg-2">
-        <div class="card border-0 shadow-lg">
-          <div class="card-body p-4">
-            <div class="text-center mb-3">
-              <img src="img/awais.png" alt="Muhammad Awais"
-                   class="rounded-circle border border-secondary"
-                   style="width:350px; height:350px; object-fit:cover;">
-            </div>
-
-            <h5 class="card-title text-center mb-3 text-white">
-              <span class="badge hero-badge badge-pill mb-3">
-                <i class="bi bi-mortarboard me-1"></i> 2nd Year PhD Student, Télécom Paris
-              </span>
-            </h5>
-
-            <p class="small text-center text-soft-white">
-              AI-enhanced side-channel attack pipelines, combining hardware simulation and validation,
-              machine learning, and microarchitectural analysis for modern SoCs and CPUs.
-            </p>
-
-            <ul class="small mb-0 text-soft-white">
-              <li>Automating leakage-based attacks using AI.</li>
-              <li>Gem5 simulation of microarchitectural leak sources.</li>
-              <li>Evaluating attacks on RISC-V, ARM, and x86 platforms.</li>
-              <li>Developing next-generation detection and mitigation strategies.</li>
-            </ul>
-          </div>
-        </div>
+      <div class="col-lg-4 order-lg-2 text-center">
+        <img src="img/awais.png" alt="Portrait of Muhammad Awais" class="hero-photo">
       </div>
 
-      <div class="col-lg-6 order-lg-1">
+      <div class="col-lg-8 order-lg-1">
         <span class="badge hero-badge badge-pill mb-3">
-          <i class="bi bi-person-badge me-1"></i> PhD Research Overview
+          <i class="bi bi-mortarboard me-1"></i> 3rd-Year PhD Researcher · Télécom Paris, Institut Polytechnique de Paris
         </span>
 
         <h1 class="display-5 fw-bold mb-3">
-          Advanced <span class="text-primary">AI-Driven Automation</span><br>
-          for Side-Channel Attacks
+          Securing <span class="text-primary">RISC-V Processors</span><br>
+          before they reach silicon
         </h1>
 
-        <p class="lead mb-4 text-soft-white">
-          I am a PhD researcher at <strong>Télécom Paris</strong>, working on
-          <em>AI-based automation of side-channel attacks and their analysis</em>.
-          My work explores how machine learning, hardware simulation, and
-          microarchitectural modeling can advance modern hardware security.
+        <p class="lead mb-4 text-soft">
+          I am a PhD researcher in the COMELEC department at <strong>Télécom Paris</strong>, working within the
+          ANR <strong>SCAMA</strong> project. My research covers <em>pre-silicon security validation</em>,
+          <em>ISA-level mitigations</em>, <em>side-channel analysis</em> and <em>microarchitectural vulnerability
+          assessment</em> for RISC-V processors, combining gem5 simulation, machine learning and validation on real
+          hardware such as the SiFive HiFive Premier P550.
         </p>
 
-        <div class="d-flex flex-wrap gap-2 mb-4">
-          <span class="pill-tag bg-dark">AI-Based SCA Automation</span>
-          <span class="pill-tag bg-dark">Microarchitectural Leaks</span>
-          <span class="pill-tag bg-dark">RISC-V / gem5</span>
-          <span class="pill-tag bg-dark">Hardware Security</span>
+        <div class="mb-4">
+          <span class="pill-tag">RISC-V Security</span>
+          <span class="pill-tag">Spectre Mitigations</span>
+          <span class="pill-tag">gem5 / Pre-silicon Validation</span>
+          <span class="pill-tag">Side-Channel Analysis</span>
+          <span class="pill-tag">ML for Hardware Security</span>
+        </div>
+
+        <div class="row g-3 mb-4" style="max-width: 560px;">
+          <div class="col-4"><div class="stat"><div class="num">6</div><div class="lbl">Papers in 2026</div></div></div>
+          <div class="col-4"><div class="stat"><div class="num"><i class="bi bi-trophy-fill award" style="font-size:1.3rem"></i></div><div class="lbl">Best Paper, AISC 2026</div></div></div>
+          <div class="col-4"><div class="stat"><div class="num">P550</div><div class="lbl">Silicon-validated</div></div></div>
         </div>
 
         <div class="d-flex flex-wrap gap-2">
-          <a href="#attacks" class="btn btn-primary btn-lg">Explore Attacks</a>
-          <a href="#research" class="btn btn-outline-light btn-lg">View Research Focus</a>
-          <a href="https://scholar.google.com/citations?user=9I0qVQEAAAAJ&hl=en" target="_blank" class="btn btn-outline-light btn-lg">
-            <i class="bi bi-mortarboard me-1"></i> Google Scholar
+          <a href="#publications" class="btn btn-primary btn-lg">Publications</a>
+          <a href="#research" class="btn btn-outline-light btn-lg">Research</a>
+          <a href="https://scholar.google.com/citations?user=9I0qVQEAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-outline-light btn-lg" aria-label="Google Scholar">
+            <i class="bi bi-mortarboard"></i>
+          </a>
+          <a href="https://github.com/awais00094" target="_blank" rel="noopener" class="btn btn-outline-light btn-lg" aria-label="GitHub">
+            <i class="bi bi-github"></i>
           </a>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<section class="py-5 bg-dark" id="publications">
+<!-- ============================== NEWS ============================== -->
+<section id="news">
   <div class="container">
-    <p class="section-title mb-1">Publications</p>
-    <h2 class="section-heading mb-4">Selected Research Outputs</h2>
-
-    <div class="card border-0 shadow-sm p-4 publication-card">
-      <div id="bibbase-wrapper"></div>
-      <script src="https://bibbase.org/show?bib=https://awais00094.github.io/publications.bib&jsonp=1"></script>
-    </div>
-  </div>
-</section>
-
-<section class="py-5" id="about">
-  <div class="container">
-    <p class="section-title mb-1">Overview</p>
-    <h2 class="section-heading mb-4">What Are Side-Channel Attacks?</h2>
-    <div class="row gy-4">
-      <div class="col-lg-8">
-        <p class="text-soft-gray">
-          Side-channel attacks exploit indirect information leaked by hardware during computation,
-          such as execution time, power consumption, electromagnetic emissions, or microarchitectural
-          behavior. Instead of breaking cryptography mathematically, attackers observe how a device
-          behaves while performing sensitive operations.
-        </p>
-        <p class="text-soft-gray mb-0">
-          Research in hardware security aims to model, measure, and mitigate these leaks at multiple
-          layers: circuit, microarchitecture, firmware, and software. This includes secure design of
-          CPUs, accelerators, cryptographic engines, and embedded systems.
-        </p>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card h-100">
-          <div class="card-body text-soft-white">
-            <h5 class="card-title mb-3">Key Concepts</h5>
-            <ul class="list-unstyled small mb-0">
-              <li class="mb-2"><i class="bi bi-dot text-primary"></i> Information leakage channels</li>
-              <li class="mb-2"><i class="bi bi-dot text-primary"></i> Cryptographic implementations (AES, RSA, ECC)</li>
-              <li class="mb-2"><i class="bi bi-dot text-primary"></i> Microarchitectural attacks (cache, branch predictor, TLB)</li>
-              <li><i class="bi bi-dot text-primary"></i> Countermeasures and secure-by-design architectures</li>
-            </ul>
-          </div>
+    <p class="section-title mb-1">News</p>
+    <h2 class="section-heading mb-4">Recent Highlights</h2>
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="news-item">
+          <div class="news-date">Oct 2026</div>
+          <div class="news-text"><strong>“Unfenced: Atomic Guards Against Spectre”</strong> presented at <strong>HASP 2026</strong>, co-located with MICRO 2026 in Athens. Lock-free Spectre mitigations built on RISC-V atomics, with a 2.8× speedup over fences on the SiFive P550.</div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">Oct 2026</div>
+          <div class="news-text">Co-organized <strong>PROOFS 2026</strong> (co-located with CHES 2026, Antalya), where our <strong>gem5-based IoT microcontroller framework</strong> paper was also presented.</div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">Oct 2026</div>
+          <div class="news-text">Our IOLTS 2026 paper was invited for an extended version in the <strong>IEEE Transactions on Device and Materials Reliability (TDMR)</strong> special issue on IOLTS 2026.</div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">Jul 2026</div>
+          <div class="news-text"><strong>TRAPHALT</strong> presented at <strong>SECRYPT 2026</strong> in Porto. We show how a user-mode program can persistently halt a RISC-V core through kernel and OpenSBI trap handling.</div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">Jul 2026</div>
+          <div class="news-text">Presented ML-based detection of speculative-execution leakage and ISA-level masking wrappers at <strong>IOLTS 2026</strong> in Polignano a Mare, Italy.</div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">2026</div>
+          <div class="news-text">The extended version of <strong>RV-Sec5</strong>, with a new instrumentation-overhead analysis, was published in the <strong>Pragmatic Cybersecurity</strong> journal.</div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">Feb 2026</div>
+          <div class="news-text"><i class="bi bi-trophy-fill award me-1"></i><strong>Best Paper Award</strong> at <strong>AISC 2026</strong> (ACSW, Melbourne) for RV-Sec5, our targeted ISA-level gem5 instrumentation for RISC-V security evaluation.</div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">Dec 2025</div>
+          <div class="news-text">Opcode-level analysis of encryption-based microarchitectural attacks presented at <strong>IEEE ComComAp 2025</strong> in Madrid.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="py-5 bg-dark" id="attacks">
+<!-- ============================== RESEARCH ============================== -->
+<section class="section-alt" id="research">
   <div class="container">
-    <p class="section-title mb-1">Taxonomy</p>
-    <h2 class="section-heading mb-4">Types of Side-Channel Attacks I Focus On</h2>
+    <p class="section-title mb-1">Research</p>
+    <h2 class="section-heading mb-2">Projects</h2>
+    <p class="text-soft mb-4" style="max-width: 760px;">
+      My work follows the processor security lifecycle. I find leakage and fault paths early in simulation, design
+      mitigations at the ISA level, and then confirm both attacks and defenses on commercial RISC-V silicon.
+    </p>
+
     <div class="row g-4">
 
-      <div class="col-md-6 col-lg-3">
-        <div class="card h-100">
-          <div class="card-body">
-            <div class="d-flex align-items-center mb-3">
-              <div class="me-2">
-                <i class="bi bi-lightning-charge text-primary fs-4"></i>
-              </div>
-              <h5 class="card-title mb-0 text-soft-white">Power Analysis of IoT Devices</h5>
-            </div>
-            <p class="card-text small text-soft-gray">
-              Power analysis on IoT devices reveals data-dependent consumption patterns that attackers can exploit
-              to extract cryptographic keys and sensitive operations. It measures dynamic power consumption during
-              cryptographic execution to recover secret keys through SPA, DPA, or CPA.
-            </p>
-            <span class="pill-tag bg-dark">gem5 Simulations</span>
-            <span class="pill-tag bg-dark mt-1">IoT Benchmark Testing</span>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-lift h-100"><div class="card-body p-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="project-icon"><i class="bi bi-shield-check"></i></span>
+            <div><h5 class="mb-0">Unfenced · Atomic Guards</h5><div class="project-venue">HASP @ MICRO 2026</div></div>
           </div>
-        </div>
+          <p class="small text-soft">
+            Lock-free, ISA-level Spectre V1/V2 mitigations that use RISC-V <code>lr.w.aq</code>/<code>sc.w.rl</code>
+            instead of serializing fences. On the SiFive HiFive Premier P550, a batched variant (N=16) is
+            <strong>2.8× faster</strong> than fence-based protection with a 0% store-conditional failure rate.
+          </p>
+          <span class="pill-tag">Spectre</span><span class="pill-tag">RISC-V Atomics</span><span class="pill-tag">SiFive P550</span>
+        </div></div>
       </div>
 
-      <div class="col-md-6 col-lg-3">
-        <div class="card h-100">
-          <div class="card-body">
-            <div class="d-flex align-items-center mb-3">
-              <div class="me-2">
-                <i class="bi bi-stopwatch text-primary fs-4"></i>
-              </div>
-              <h5 class="card-title mb-0 text-soft-white">Timing Attacks</h5>
-            </div>
-            <p class="card-text small text-soft-gray">
-              These attacks exploit execution-time variations caused by data-dependent branches, memory accesses,
-              or microarchitectural events. They also abuse shared resources such as caches, branch predictors,
-              and speculative execution units.
-            </p>
-            <span class="pill-tag bg-dark">FLUSH + Reload</span>
-            <span class="pill-tag bg-dark">Prime + Probe</span>
-            <span class="pill-tag bg-dark">Spectre Variant Attacks</span>
-            <span class="pill-tag bg-dark mt-1">Constant-Time / Formal Analysis</span>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-lift h-100"><div class="card-body p-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="project-icon"><i class="bi bi-sign-stop"></i></span>
+            <div><h5 class="mb-0">TRAPHALT</h5><div class="project-venue">SECRYPT 2026</div></div>
           </div>
-        </div>
+          <p class="small text-soft">
+            A privilege-boundary attack in which crafted illegal instructions from user mode travel through kernel trap
+            handling into OpenSBI's unhandled-fault path (<code>sbi_trap_error()</code> → <code>sbi_hart_hang()</code>),
+            persistently halting a RISC-V hart. Validated on the P550 via JTAG/OpenOCD.
+          </p>
+          <span class="pill-tag">Privilege Boundary</span><span class="pill-tag">OpenSBI</span><span class="pill-tag">DoS</span>
+          <div class="mt-2"><a class="proj-link" href="https://github.com/Awais00094/RISCV-CoreHalt-TrapStudy" target="_blank" rel="noopener"><i class="bi bi-github me-1"></i>Code</a></div>
+        </div></div>
       </div>
 
-      <div class="col-md-6 col-lg-3">
-        <div class="card h-100">
-          <div class="card-body">
-            <div class="d-flex align-items-center mb-3">
-              <div class="me-2">
-                <i class="bi bi-wifi text-primary fs-4"></i>
-              </div>
-              <h5 class="card-title mb-0 text-soft-white">Opcode Analysis</h5>
-            </div>
-            <p class="card-text small text-soft-gray">
-              Opcode-level profiling links specific instruction sequences to distinctive leakage patterns,
-              enabling fine-grained attribution and optimization of side-channel attacks on modern processors.
-              This includes gem5-based simulation and detailed O3 pipeline analysis.
-            </p>
-            <span class="pill-tag bg-dark">Cryptographic Opcodes</span>
-            <span class="pill-tag bg-dark mt-1">OpenSSL</span>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-lift h-100"><div class="card-body p-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="project-icon"><i class="bi bi-bounding-box"></i></span>
+            <div><h5 class="mb-0">RV-Sec5</h5><div class="project-venue"><span class="award"><i class="bi bi-trophy-fill"></i> Best Paper</span> · AISC 2026 · Pragmatic Cybersecurity</div></div>
           </div>
-        </div>
+          <p class="small text-soft">
+            Targeted ISA-level instrumentation in gem5 for pre-silicon RISC-V security evaluation. It exposes
+            security-relevant microarchitectural events at instruction granularity. The journal version adds a
+            full instrumentation-overhead analysis.
+          </p>
+          <span class="pill-tag">gem5</span><span class="pill-tag">Pre-silicon</span><span class="pill-tag">ISA Instrumentation</span>
+          <div class="mt-2"><a class="proj-link" href="https://github.com/Awais00094/RvSec5_Gem5_ISA_Instrumentation" target="_blank" rel="noopener"><i class="bi bi-github me-1"></i>Code</a></div>
+        </div></div>
       </div>
 
-      <div class="col-md-6 col-lg-3">
-        <div class="card h-100">
-          <div class="card-body">
-            <div class="d-flex align-items-center mb-3">
-              <div class="me-2">
-                <i class="bi bi-diagram-3 text-primary fs-4"></i>
-              </div>
-              <h5 class="card-title mb-0 text-soft-white">ISA Modifications</h5>
-            </div>
-            <p class="card-text small text-soft-gray">
-              Custom ISA extensions in RISC-V enable controlled leakage points, making it possible to analyze,
-              trigger, and evaluate side-channel vulnerabilities with fine-grained architectural visibility.
-              ISA-level CSR modifications expose microarchitectural behavior with high precision.
-            </p>
-            <span class="pill-tag bg-dark">RISC-V ISA</span>
-            <span class="pill-tag bg-dark mt-1">CSRs</span>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-lift h-100"><div class="card-body p-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="project-icon"><i class="bi bi-diagram-3"></i></span>
+            <div><h5 class="mb-0">ML Detection of Speculative Leakage</h5><div class="project-venue">IOLTS 2026 · TDMR extension in progress</div></div>
           </div>
-        </div>
+          <p class="small text-soft">
+            Combines static code features (AST/CFG/DFG) with gem5 runtime signals to detect Spectre-variant
+            leakage, using supervised models (XGBoost, ~97% accuracy) and unsupervised ones (HDBSCAN, Isolation Forest).
+            ISA-level masking wrappers on the P550 cost only <strong>1.6%</strong> runtime overhead. The journal
+            extension explores graph-based learning on CFG/DFG.
+          </p>
+          <span class="pill-tag">XGBoost</span><span class="pill-tag">Graph Learning</span><span class="pill-tag">Masking</span>
+        </div></div>
       </div>
 
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-lift h-100"><div class="card-body p-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="project-icon"><i class="bi bi-radar"></i></span>
+            <div><h5 class="mb-0">SCARe</h5><div class="project-venue">Side-Channel Attack Resilience testing</div></div>
+          </div>
+          <p class="small text-soft">
+            A pre-silicon framework for side-channel vulnerability analysis. Version 2.0 adds ARM architecture support,
+            a live execution engine and a new detector suite, and an open-source release is planned.
+          </p>
+          <span class="pill-tag">Pre-silicon SCA</span><span class="pill-tag">RISC-V &amp; ARM</span><span class="pill-tag">Tooling</span>
+        </div></div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-lift h-100"><div class="card-body p-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="project-icon"><i class="bi bi-motherboard"></i></span>
+            <div><h5 class="mb-0">gem5 for IoT Microcontrollers</h5><div class="project-venue">PROOFS 2026</div></div>
+          </div>
+          <p class="small text-soft">
+            A gem5-based framework for modeling IoT microcontrollers together with their peripherals and firmware,
+            with ML-driven design-space exploration and anomaly detection. Validated against hardware measurements
+            on a Zynq-7000 Cortex-A9.
+          </p>
+          <span class="pill-tag">IoT</span><span class="pill-tag">DSE</span><span class="pill-tag">Firmware</span>
+          <div class="mt-2"><a class="proj-link" href="https://github.com/Awais00094/IoT-Aware-Gem5-ML" target="_blank" rel="noopener"><i class="bi bi-github me-1"></i>Code</a></div>
+        </div></div>
+      </div>
+
+    </div>
+
+    <!-- Methodology + next directions -->
+    <div class="row gy-4 mt-4">
+      <div class="col-lg-6">
+        <div class="card h-100"><div class="card-body p-4">
+          <h5 class="mb-3">Methodology</h5>
+          <div class="flow-step"><span class="dot">1</span><h6 class="mb-1">Model &amp; instrument</h6><p class="small text-soft mb-0">Expose leakage sources in gem5 (O3 pipeline, caches, predictors) with ISA-level instrumentation.</p></div>
+          <div class="flow-step"><span class="dot">2</span><h6 class="mb-1">Detect &amp; attribute</h6><p class="small text-soft mb-0">Use machine learning on static and runtime features to flag vulnerable code patterns and attack behaviors.</p></div>
+          <div class="flow-step"><span class="dot">3</span><h6 class="mb-1">Mitigate at the ISA</h6><p class="small text-soft mb-0">Design lightweight, deployable mitigations such as atomic guards and masking wrappers.</p></div>
+          <div class="flow-step"><span class="dot">4</span><h6 class="mb-1">Validate on silicon</h6><p class="small text-soft mb-0">Confirm attacks and measure overhead on commercial RISC-V hardware (SiFive HiFive Premier P550).</p></div>
+        </div></div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card h-100"><div class="card-body p-4">
+          <h5 class="mb-3">Emerging Directions</h5>
+          <ul class="small text-soft mb-0 ps-3">
+            <li class="mb-2"><strong class="text-white">Post-quantum cryptography on RISC-V:</strong> evaluating ISA extensions for ML-KEM (CRYSTALS-Kyber, FIPS 203) acceleration in gem5.</li>
+            <li class="mb-2"><strong class="text-white">Timer-free cache channels:</strong> instruction-cache attacks on RISC-V and ARM without high-resolution timers.</li>
+            <li class="mb-2"><strong class="text-white">FPGA power side channels:</strong> ring-oscillator sensors against TrustZone Secure World on Zynq platforms.</li>
+            <li><strong class="text-white">Neuromorphic hardware:</strong> side-channel analysis of emerging compute paradigms.</li>
+          </ul>
+        </div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="py-5" id="defenses">
+<!-- ============================== PUBLICATIONS ============================== -->
+<section id="publications">
   <div class="container">
-    <p class="section-title mb-1">Mitigation</p>
-    <h2 class="section-heading mb-4">Hardware & Software Countermeasures</h2>
-    <div class="row gy-4">
-      <div class="col-lg-7">
-        <div class="row g-3">
-          <div class="col-sm-6">
-            <div class="card h-100">
-              <div class="card-body">
-                <h6 class="card-title text-soft-white">Algorithmic Countermeasures</h6>
-                <p class="small text-soft-gray mb-0">
-                  Masking, hiding, constant-time implementations, and randomized encodings
-                  reduce correlation between leakage and secrets.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="card h-100">
-              <div class="card-body">
-                <h6 class="card-title text-soft-white">Microarchitectural Isolation</h6>
-                <p class="small text-soft-gray mb-0">
-                  Cache partitioning, constant-latency memories, and flushing or fencing
-                  strategies for untrusted code and enclaves.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="card h-100">
-              <div class="card-body">
-                <h6 class="card-title text-soft-white">Secure Hardware Design</h6>
-                <p class="small text-soft-gray mb-0">
-                  Side-channel-resistant logic styles, balanced routing, power-noise
-                  injection, and secure SoC or FPGA architectures.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="card h-100">
-              <div class="card-body">
-                <h6 class="card-title text-soft-white">Verification & Testing</h6>
-                <p class="small text-soft-gray mb-0">
-                  Formal leakage models, leakage assessment, TVLA tests, and simulation
-                  such as gem5 or RTL-level analysis to quantify risk.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-5">
-        <h6 class="text-soft-gray mb-3">Typical Secure-Design Workflow</h6>
-        <div class="row">
-          <div class="col-2 d-flex justify-content-center">
-            <div class="timeline-line"></div>
-          </div>
-          <div class="col-10">
-            <div class="mb-4">
-              <h6 class="mb-1 text-white">1. Threat Modeling</h6>
-              <p class="small text-soft-gray mb-0">
-                Identify attackers, capabilities, and targeted assets.
-              </p>
-            </div>
-            <div class="mb-4">
-              <h6 class="mb-1 text-white">2. Leakage Assessment</h6>
-              <p class="small text-soft-gray mb-0">
-                Measure or simulate side-channel leakage on prototypes or models.
-              </p>
-            </div>
-            <div class="mb-4">
-              <h6 class="mb-1 text-white">3. Countermeasure Design</h6>
-              <p class="small text-soft-gray mb-0">
-                Integrate algorithmic and hardware-level protections and evaluate overhead.
-              </p>
-            </div>
-            <div class="mb-0">
-              <h6 class="mb-1 text-white">4. Validation & Certification</h6>
-              <p class="small text-soft-gray mb-0">
-                Perform standardized tests and iterate on the design.
-              </p>
-            </div>
-          </div>
-        </div>
+    <p class="section-title mb-1">Publications</p>
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-3">
+      <h2 class="section-heading mb-0">Papers &amp; Posters</h2>
+      <div class="d-flex gap-2">
+        <a href="publications.bib" class="btn btn-sm btn-outline-light" download><i class="bi bi-download me-1"></i>BibTeX</a>
+        <a href="https://scholar.google.com/citations?user=9I0qVQEAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-sm btn-outline-light"><i class="bi bi-mortarboard me-1"></i>Scholar</a>
       </div>
     </div>
+
+    <div class="pub-filters d-flex flex-wrap gap-2 mb-2" role="group" aria-label="Filter publications">
+      <button class="btn btn-outline-light active" data-filter="all">All</button>
+      <button class="btn btn-outline-light" data-filter="journal">Journal</button>
+      <button class="btn btn-outline-light" data-filter="conference">Conference</button>
+      <button class="btn btn-outline-light" data-filter="workshop">Workshop</button>
+      <button class="btn btn-outline-light" data-filter="poster">Poster</button>
+    </div>
+
+    <div id="pub-list"></div>
   </div>
 </section>
 
-<section class="py-5 bg-dark" id="research">
+<!-- ============================== SOFTWARE ============================== -->
+<section class="section-alt" id="software">
   <div class="container">
-    <p class="section-title mb-1">Research Focus</p>
-    <h2 class="section-heading mb-4">Current & Future Work</h2>
-    <div class="row gy-4">
-
-      <div class="col-lg-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title mb-2 text-soft-white">RISC-V / x86 / ARM Platforms</h5>
-            <p class="small text-soft-gray">
-              Designing and evaluating microarchitectural side-channel attacks on open
-              ISAs and commercial architectures using simulation and real hardware.
-            </p>
-            <ul class="small text-soft-gray mb-0">
-              <li>gem5-based attack pipelines</li>
-              <li>ISA-level characterization</li>
-              <li>Cache, branch, and speculative leaks</li>
-            </ul>
-          </div>
-        </div>
+    <p class="section-title mb-1">Open Source</p>
+    <h2 class="section-heading mb-4">Software &amp; Artifacts</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <a href="https://github.com/Awais00094/RvSec5_Gem5_ISA_Instrumentation" target="_blank" rel="noopener" class="text-decoration-none">
+          <div class="card card-lift h-100"><div class="card-body p-4">
+            <h6 class="text-white mb-1"><i class="bi bi-github me-2"></i>RvSec5_Gem5_ISA_Instrumentation</h6>
+            <p class="small text-soft mb-0">ISA-level gem5 instrumentation for RISC-V security evaluation (RV-Sec5).</p>
+          </div></div>
+        </a>
       </div>
-
-      <div class="col-lg-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title mb-2 text-soft-white">Measurement & Datasets</h5>
-            <p class="small text-soft-gray">
-              Capturing and analyzing power, EM, and timing traces to build datasets for
-              statistical and machine learning-based side-channel analysis.
-            </p>
-            <ul class="small text-soft-gray mb-0">
-              <li>Lab experiments on FPGA and SoC boards</li>
-              <li>Signal processing and feature engineering</li>
-              <li>ML-based key recovery and detection</li>
-            </ul>
-          </div>
-        </div>
+      <div class="col-md-4">
+        <a href="https://github.com/Awais00094/RISCV-CoreHalt-TrapStudy" target="_blank" rel="noopener" class="text-decoration-none">
+          <div class="card card-lift h-100"><div class="card-body p-4">
+            <h6 class="text-white mb-1"><i class="bi bi-github me-2"></i>RISCV-CoreHalt-TrapStudy</h6>
+            <p class="small text-soft mb-0">TRAPHALT artifacts: trap-handling core-halt study on the SiFive P550.</p>
+          </div></div>
+        </a>
       </div>
-
-      <div class="col-lg-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title mb-2 text-soft-white">Defenses & Tooling</h5>
-            <p class="small text-soft-gray">
-              Building tools to evaluate countermeasures, automate experiments, and
-              support secure-by-design hardware development.
-            </p>
-            <ul class="small text-soft-gray mb-0">
-              <li>Leakage-aware design flows</li>
-              <li>Automated testbenches</li>
-              <li>Visualization dashboards</li>
-            </ul>
-          </div>
-        </div>
+      <div class="col-md-4">
+        <a href="https://github.com/Awais00094/IoT-Aware-Gem5-ML" target="_blank" rel="noopener" class="text-decoration-none">
+          <div class="card card-lift h-100"><div class="card-body p-4">
+            <h6 class="text-white mb-1"><i class="bi bi-github me-2"></i>IoT-Aware-Gem5-ML</h6>
+            <p class="small text-soft mb-0">gem5 framework for IoT microcontrollers with peripherals, firmware and ML-based DSE.</p>
+          </div></div>
+        </a>
       </div>
-
     </div>
   </div>
 </section>
 
-<section class="py-5" id="contact">
+<!-- ============================== SERVICE & TEACHING ============================== -->
+<section id="service">
+  <div class="container">
+    <p class="section-title mb-1">Community</p>
+    <h2 class="section-heading mb-4">Service, Teaching &amp; Funding</h2>
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="card h-100"><div class="card-body p-4">
+          <h5 class="mb-3"><i class="bi bi-people me-2 text-primary"></i>Organization</h5>
+          <ul class="small text-soft mb-0 ps-3">
+            <li class="mb-2">Co-organizer, <strong class="text-white">PROOFS 2026</strong> (co-located with CHES 2026, Antalya)</li>
+            <li class="mb-2">Organizing committee, <strong class="text-white">MICSEC 2025</strong></li>
+            <li>Managing the JCEN special issue on PROOFS 2024/2025 papers</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card h-100"><div class="card-body p-4">
+          <h5 class="mb-3"><i class="bi bi-journal-check me-2 text-primary"></i>Reviewing</h5>
+          <ul class="small text-soft mb-0 ps-3">
+            <li class="mb-2">IEEE Journal on Selected Areas in Communications (JSAC)</li>
+            <li class="mb-2">ACM Transactions on Embedded Computing Systems (TECS)</li>
+            <li class="mb-2">PROOFS 2025 &amp; 2026</li>
+            <li>CINC</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card h-100"><div class="card-body p-4">
+          <h5 class="mb-3"><i class="bi bi-easel me-2 text-primary"></i>Teaching &amp; Funding</h5>
+          <ul class="small text-soft mb-0 ps-3">
+            <li class="mb-2">Embedded Linux, Télécom Paris (2025, 2026)</li>
+            <li>Funded by the ANR <strong class="text-white">SCAMA</strong> project (ANR-23-CE39-0011)</li>
+          </ul>
+          <hr class="border-secondary">
+          <p class="small text-muted-2 mb-1">Supervised by</p>
+          <p class="small text-soft mb-0">Maria Mushtaq, Lirida Naviner (Télécom Paris), Florent Bruguier (LIRMM) and Jawad Haj-Yahya</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== CONTACT ============================== -->
+<section class="section-alt" id="contact">
   <div class="container">
     <p class="section-title mb-1">Get in Touch</p>
-    <h2 class="section-heading mb-4">Contact & Collaboration</h2>
-    <div class="row gy-4">
-      <div class="col-lg-6">
-        <p class="text-soft-gray">
-          Welcome, and thank you for visiting. Feel free to explore my work, connect with me,
-          and collaborate on research in hardware security and side-channel analysis.
+    <h2 class="section-heading mb-4">Contact &amp; Collaboration</h2>
+    <div class="row gy-4 align-items-center">
+      <div class="col-lg-7">
+        <p class="text-soft mb-0">
+          I'm happy to discuss collaborations on RISC-V security, speculative-execution defenses, pre-silicon validation
+          and side-channel analysis.
         </p>
-
-        <ul class="list-unstyled small mb-0 text-white">
-          <li class="mb-2">
-            <i class="bi bi-envelope me-2 text-primary"></i>
-            <a href="mailto:muhammad.awais@telecom-paris.fr" class="text-white text-decoration-none">
-              muhammad.awais@telecom-paris.fr
-            </a>
-          </li>
-
-          <li class="mb-2">
-            <i class="bi bi-building me-2 text-primary"></i>
-            SSH / COMELEC / Télécom Paris
-          </li>
-
-          <li class="mb-2">
-            <i class="bi bi-github me-2 text-primary"></i>
-            <a href="https://github.com/awais00094" target="_blank" class="text-white text-decoration-none">
-              github.com/awais00094
-            </a>
-          </li>
-
-          <li>
-            <i class="bi bi-mortarboard me-2 text-primary"></i>
-            <a href="https://scholar.google.com/citations?user=9I0qVQEAAAAJ&hl=en" target="_blank" class="text-white text-decoration-none">
-              Google Scholar Profile
-            </a>
-          </li>
-        </ul>
       </div>
-
-      <div class="col-lg-6">
-        <form class="row g-3" action="mailto:muhammad.awais@telecom-paris.fr" method="POST" enctype="text/plain">
-          <div class="col-md-6">
-            <label class="form-label">Name</label>
-            <input type="text" name="Name" class="form-control bg-dark text-light border-secondary" placeholder="Your name">
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">Email</label>
-            <input type="email" name="Email" class="form-control bg-dark text-light border-secondary" placeholder="you@example.com">
-          </div>
-
-          <div class="col-12">
-            <label class="form-label">Message</label>
-            <textarea name="Message" class="form-control bg-dark text-light border-secondary" rows="4" placeholder="Let’s talk about side-channel attacks and hardware security..."></textarea>
-          </div>
-
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary">
-              <i class="bi bi-send me-1"></i> Send Message
-            </button>
-          </div>
-        </form>
+      <div class="col-lg-5">
+        <ul class="list-unstyled mb-0">
+          <li class="mb-2"><i class="bi bi-envelope me-2 text-primary"></i><a href="mailto:muhammad.awais@telecom-paris.fr" class="link-soft">muhammad.awais@telecom-paris.fr</a></li>
+          <li class="mb-2"><i class="bi bi-building me-2 text-primary"></i><span class="text-soft">COMELEC / SSH, Télécom Paris, Palaiseau</span></li>
+          <li class="mb-2"><i class="bi bi-github me-2 text-primary"></i><a href="https://github.com/awais00094" target="_blank" rel="noopener" class="link-soft">github.com/awais00094</a></li>
+          <li><i class="bi bi-mortarboard me-2 text-primary"></i><a href="https://scholar.google.com/citations?user=9I0qVQEAAAAJ&hl=en" target="_blank" rel="noopener" class="link-soft">Google Scholar</a></li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
 <footer class="footer py-3 border-top border-secondary">
-  <div class="container d-flex flex-wrap justify-content-between align-items-center">
-    <p class="mb-0 small">
-      © <span id="year"></span> Muhammad Awais · All rights reserved.
-    </p>
-    <p class="mb-0 small">
-      Télécom Paris <span class="text-primary">M Awais</span>
-    </p>
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <p class="mb-0 small">© <span id="year"></span> Muhammad Awais</p>
+    <p class="mb-0 small">Télécom Paris · Institut Polytechnique de Paris · <span id="updated">Updated October 2026</span></p>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+  /* ------------------------------------------------------------------
+     PUBLICATIONS: edit this list to add new papers (newest first).
+     type: "journal" | "conference" | "workshop" | "poster"
+     ------------------------------------------------------------------ */
+  const ME = "Muhammad Awais";
+  const PUBS = [
+    {
+      year: 2026, type: "workshop",
+      title: "Unfenced: Atomic Guards Against Spectre",
+      authors: [ME, "Maria Mushtaq", "Lirida Naviner", "Florent Bruguier", "Jawad Haj Yahya"],
+      venue: "HASP 2026: Hardware and Architectural Support for Security and Privacy, co-located with MICRO 2026, Athens, Greece"
+    },
+    {
+      year: 2026, type: "workshop",
+      title: "A gem5-based Framework for Analyzing IoT Microcontrollers with Peripherals and Firmware",
+      authors: [ME, "Maria Mushtaq", "Lirida Naviner", "Jawad Haj Yahya", "Florent Bruguier"],
+      venue: "PROOFS 2026: 14th International Workshop on Security Proofs for Embedded Systems, co-located with CHES 2026, Antalya, Turkey",
+      links: { code: "https://github.com/Awais00094/IoT-Aware-Gem5-ML" }
+    },
+    {
+      year: 2026, type: "conference",
+      title: "Traphalt: Indirect Core Halt via Trap Handling to Halt a RISC-V Core from User Mode through Kernel-Mediated Fault Handling",
+      authors: [ME, "Maria Mushtaq", "Lirida Naviner", "Jawad Haj Yahya", "Florent Bruguier"],
+      venue: "SECRYPT 2026: 23rd International Conference on Security and Cryptography, Porto, Portugal, SCITEPRESS, pp. 1005–1013",
+      links: { pdf: "https://www.scitepress.org/Papers/2026/151507/151507.pdf", doi: "https://doi.org/10.5220/0015150700004103", code: "https://github.com/Awais00094/RISCV-CoreHalt-TrapStudy" }
+    },
+    {
+      year: 2026, type: "conference",
+      title: "Microarchitectural Analysis of Speculative Execution Patterns in RISC-V using Machine Learning and ISA-Level Masking Wrappers",
+      authors: [ME, "Maria Mushtaq", "Lirida Naviner", "Florent Bruguier", "Jawad Haj Yahya"],
+      venue: "IOLTS 2026: IEEE International Symposium on On-Line Testing and Robust System Design, Polignano a Mare, Italy"
+    },
+    {
+      year: 2026, type: "journal",
+      title: "RV-Sec5: Enhancing RISC-V Security Evaluation via Targeted ISA-Level Instrumentation using gem5 (Extended Version)",
+      authors: [ME, "Maria Mushtaq", "Lirida Naviner", "Florent Bruguier", "Jawad Haj Yahya"],
+      venue: "Pragmatic Cybersecurity",
+      links: { code: "https://github.com/Awais00094/RvSec5_Gem5_ISA_Instrumentation" }
+    },
+    {
+      year: 2026, type: "conference", award: "Best Paper Award",
+      title: "RV-Sec5: Enhancing RISC-V Security Evaluation via Targeted ISA-Level Instrumentation using gem5",
+      authors: [ME, "Maria Mushtaq", "Lirida Naviner", "Florent Bruguier", "Jawad Haj Yahya"],
+      venue: "AISC 2026: 17th Australasian Information Security Conference (ACSW 2026), Melbourne, Australia, ACM",
+      links: { pdf: "https://hal.science/hal-05525254v2/file/3793638.3793640.pdf", doi: "https://doi.org/10.1145/3793638.3793640", hal: "https://hal.science/hal-05525254", code: "https://github.com/Awais00094/RvSec5_Gem5_ISA_Instrumentation" }
+    },
+    {
+      year: 2025, type: "conference",
+      title: "Opcode Analysis of Real Encryption-Based Microarchitectural Attacks Using gem5",
+      authors: [ME, "Mahreen Khan", "Maria Mushtaq", "Lirida Naviner", "Jawad Haj-Yahya", "Florent Bruguier", "Renaud Pacalet", "Ludovic Apvrille"],
+      venue: "IEEE ComComAp 2025: Computing, Communications and IoT Applications, Madrid, Spain, pp. 377–384",
+      links: { pdf: "https://telecom-paris.hal.science/hal-05393482v1/file/opcodes.pdf", doi: "https://doi.org/10.1109/ComComAp68359.2025.11353163", hal: "https://telecom-paris.hal.science/hal-05393482", poster: "https://hal.science/hal-05422102v1/file/Poster_IEEE_COM_COM_AP.pdf" }
+    },
+    {
+      year: 2025, type: "workshop",
+      title: "Leveraging gem5 and Machine Learning for End-to-End Detection of Cache-based Side-Channel Attack Patterns",
+      authors: [ME, "Maria Mushtaq", "Lirida Naviner", "Florent Bruguier", "Pascal Benoit", "Jawad Haj-Yahya"],
+      venue: "PROOFS 2025: 13th International Workshop on Security Proofs for Embedded Systems, Kuala Lumpur, Malaysia",
+      links: { pdf: "https://hal.science/hal-05372979v1/file/PROOFS2025_paper_4%20%281%29.pdf", hal: "https://hal.science/hal-05372979" }
+    },
+    {
+      year: 2024, type: "conference",
+      title: "Decoding Attack Behaviors by Analyzing Patterns in Instruction-Based Attacks using gem5",
+      authors: [ME, "Maria Mushtaq", "Lirida Naviner", "Florent Bruguier", "Jawad Haj-Yahya", "Pascal Benoit"],
+      venue: "IEEE RSP 2024: International Workshop on Rapid System Prototyping, North Carolina, USA, pp. 1–6",
+      links: { pdf: "https://telecom-paris.hal.science/hal-05160886v2/file/Decoding_Attack_Behaviors_by_Analyzing_Patterns_in_Instruction-Based_Attacks_using_gem5.pdf", doi: "https://doi.org/10.1109/RSP64122.2024.10871078", hal: "https://telecom-paris.hal.science/hal-05160886" }
+    },
+    {
+      year: 2024, type: "poster",
+      title: "Decoding Attack Behaviors by Analyzing Patterns in Instruction-Based Attacks using gem5",
+      authors: [ME, "Maria Mushtaq", "Lirida Naviner", "Florent Bruguier", "Jawad Haj-Yahya", "Pascal Benoit"],
+      venue: "ACACES 2024 Poster Abstracts, HiPEAC Summer School",
+      links: { hal: "https://hal.science/hal-04709017" }
+    }
+  ];
 
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-link");
+  const LINK_LABELS = { pdf: ["bi-file-earmark-pdf", "PDF"], doi: ["bi-link-45deg", "DOI"], hal: ["bi-archive", "HAL"], code: ["bi-github", "Code"], poster: ["bi-easel", "Poster"] };
+  const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      if (window.pageYOffset >= sectionTop) {
-        current = section.getAttribute("id");
-      }
+  function renderPubs(filter) {
+    const list = document.getElementById("pub-list");
+    const items = PUBS.filter(p => filter === "all" || p.type === filter);
+    let html = "", lastYear = null;
+    items.forEach(p => {
+      if (p.year !== lastYear) { html += `<div class="pub-year">${p.year}</div>`; lastYear = p.year; }
+      const authors = p.authors.map(a => a === ME ? `<span class="me">${esc(a)}</span>` : esc(a)).join(", ");
+      const links = Object.entries(p.links || {}).map(([k, url]) =>
+        `<a href="${url}" target="_blank" rel="noopener"><i class="bi ${LINK_LABELS[k][0]} me-1"></i>${LINK_LABELS[k][1]}</a>`).join("");
+      html += `<div class="pub">
+        <div class="pub-title"><span class="pub-type t-${p.type}">${p.type}</span>${esc(p.title)}${p.award ? `<span class="pub-award"><i class="bi bi-trophy-fill"></i> ${esc(p.award)}</span>` : ""}</div>
+        <div class="pub-authors">${authors}</div>
+        <div class="pub-venue">${esc(p.venue)}</div>
+        ${links ? `<div class="pub-links mt-1">${links}</div>` : ""}
+      </div>`;
     });
+    list.innerHTML = html || `<p class="text-soft mt-3">No entries in this category yet.</p>`;
+  }
 
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("active");
-      }
+  document.querySelectorAll(".pub-filters .btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".pub-filters .btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderPubs(btn.dataset.filter);
     });
   });
+  renderPubs("all");
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* Highlight current section in the navbar */
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".navbar .nav-link");
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + current));
+  });
+
+  /* Close the mobile menu after tapping a link */
+  document.querySelectorAll("#navbarNav .nav-link, #navbarNav .btn").forEach(l => l.addEventListener("click", () => {
+    const nav = document.getElementById("navbarNav");
+    if (nav.classList.contains("show")) bootstrap.Collapse.getOrCreateInstance(nav).hide();
+  }));
 </script>
 </body>
 </html>
